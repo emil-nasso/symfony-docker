@@ -1,0 +1,25 @@
+#storage:
+#  image: debian:7
+#  volumes:
+#    - /var/lib/mysql
+#  command: "true"
+
+mysql:
+  image: mysql
+  volumes:
+    - /var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: ahfeiuhif3434kjsfkjsh273827pppp
+
+#memcached:
+#  image: memcached
+#  command: memcached -m 64
+
+web:
+  build: .
+  links:
+    - mysql
+  volumes:
+    - ./:/var/www
+  ports:
+    - "9001:80"
